@@ -49,8 +49,10 @@ sensusApp.controller('homeController', function($scope) {
 
   function initView(view){
 
+  	console.log('initView',view);
   	cartodb.createVis('map', views[view].url, {
-            zoom: 9
+            zoom: 9,
+            legends: true
         })
         .done(function(vis, layers) {
           // layer 0 is the base layer, layer 1 is cartodb layer
@@ -76,6 +78,8 @@ sensusApp.controller('homeController', function($scope) {
 
   $scope.changeView = function(view){
   
+  	console.log('changeView');
+
   	var layers = viz.getLayers();
   	console.log('Layers',layers);
 
@@ -97,6 +101,7 @@ sensusApp.controller('homeController', function($scope) {
             cartodb.log.log("some error occurred");
           });
 	}
+
   initView('income');
     
 });
