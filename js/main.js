@@ -56,11 +56,10 @@ sensusApp.controller('homeController', function($scope, MapService, ngTableParam
   	,'edu': {url:'http://senseus.cartodb.com/api/v2/viz/c495a460-b23b-11e3-8f25-0e230854a1cb/viz.json', table: 'census'}
   }	;
   
-  $scope.map = null, $scope.vis = null, $scope.results = null;
+  $scope.map = null, $scope.vis = null, $scope.results = null, $scope.viewing='Population Density';
 
   function initView(view){
 
-  	console.log('initView',view);
   	cartodb.createVis('map', views[view].url, {
             zoom: 9,
             legends: true,
@@ -102,8 +101,11 @@ sensusApp.controller('homeController', function($scope, MapService, ngTableParam
 		$scope.results = data;
   }
 
-  $scope.changeView = function(view){
-  
+  $scope.changeView = function(view,e){
+  		  $scope.viewing = $(e.srcElement).html();
+  		  $('.resources-people button').removeClass('active');
+  		  $(e.srcElement).addClass('active');
+
   	      // create layer and add to the map, then add some intera
           cartodb.createLayer($scope.map, views[view].url)
           .addTo($scope.map)
@@ -123,7 +125,6 @@ sensusApp.controller('homeController', function($scope, MapService, ngTableParam
           });
 
           MapService.search(views[view].table,function(data){
-          	console.log(data.features);
           	loadTable(data.features);
           });
 	}

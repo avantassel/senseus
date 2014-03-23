@@ -30,9 +30,6 @@
                     <button type="button" class="btn btn-info btn-xs" id="first">Avg Age <span class="glyphicon glyphicon-remove-sign"></span></button>
                     <button type="button" class="btn btn-info btn-xs" ng-click="toggleView()" id="view"><span class="title">List View</span> <span class="glyphicon glyphicon-list"></span></button>
                 </div>
-
-                 | 
-
                 <div class="operations">
                     <button type="button" class="btn btn-success btn-xs"><span class="glyphicon glyphicon-floppy-disk"></span> Save</button>
                     <button type="button" class="btn btn-success btn-xs"><span class="glyphicon glyphicon-share-alt"></span> Share</button>
@@ -64,10 +61,10 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-        <h4 class="modal-title" id="myModalLabel">Want more data?</h4>
+        <h4 class="modal-title" id="myModalLabel">Stay Tuned</h4>
       </div>
       <div class="modal-body">
-        <p>This is a prototype. Is this information important to you?</p>
+        <p>This feature is coming soon!</p>
         <p class="big"><span class="glyphicon glyphicon-thumbs-up"></span> <span class="glyphicon glyphicon-thumbs-down"></span></p>
         <p>We are in the process of building out our data set. We'll let you know when there's more!</p>
         <input type="text" class="form-control" placeholder="Email address">
@@ -88,11 +85,20 @@
           <!-- Example row of columns -->
           <div class="row">
             <div class="col-md-4">
-              <h3>Current Resources & Infrastructure</h3>
+              <h3>Currently Viewing {{viewing}} in Denver, CO</h3>
               <p>Choose resources to view on the map</p>
             </div>
             <div class="col-md-8">
-              <h5>Places</h5>
+              <h5>People</h5>
+              <p class="resources-people">
+                <button class="btn btn-default " ng-click="changeView('age',$event)" role="button">Average Age</button>
+                <button class="btn btn-default active" ng-click="changeView('population',$event)"  role="button">Population Density</button>
+                <button class="btn btn-default" ng-click="changeView('income',$event)" role="button">Average Income</button>
+                <button class="btn btn-default " ng-click="changeView('edu',$event)" role="button" data-toggle="modal">Educational Attainment</button>
+                <span class="glyphicon glyphicon-plus-sign" data-toggle="modal" data-target="#coming-soon"></span>
+              </p>
+
+              <h5>Places (Coming soon)</h5>
               <p>
                 <a class="btn btn-default active" href="#" role="button" data-toggle="modal" data-target="#coming-soon">People</a>
                 <a class="btn btn-default " href="#" role="button" data-toggle="modal" data-target="#coming-soon">Retail Sectors</a>
@@ -103,15 +109,7 @@
                 <a class="btn btn-default " href="#" role="button" data-toggle="modal" data-target="#coming-soon">Parking</a>
                 <span class="glyphicon glyphicon-plus-sign" data-toggle="modal" data-target="#coming-soon"></span>
               </p>
-              <h5>People</h5>
-              <p>
-                <button class="btn btn-default " ng-click="changeView('age',$event)" role="button">Average Age</button>
-                <button class="btn btn-default " ng-click="changeView('population',$event)"  role="button">Population Density</button>
-                <button class="btn btn-default active" ng-click="changeView('income',$event)" role="button">Average Income</button>
-                <button class="btn btn-default " ng-click="changeView('edu',$event)" role="button" data-toggle="modal">Educational Attainment</button>
-                <span class="glyphicon glyphicon-plus-sign" data-toggle="modal" data-target="#coming-soon"></span>
-              </p>
-              <h5>Business</h5>
+              <h5>Business (Coming soon)</h5>
               <p>
                 <a class="btn btn-default active" href="#" role="button">Businesses in Good Standing</a>
                 <a class="btn btn-default " href="#" role="button" data-toggle="modal" data-target="#coming-soon">Density by Sector</a>
