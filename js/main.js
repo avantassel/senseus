@@ -45,10 +45,9 @@ sensusApp.controller('homeController', function($scope) {
   	,'edu': {url:'http://senseus.cartodb.com/api/v2/viz/c495a460-b23b-11e3-8f25-0e230854a1cb/viz.json'}
   }	;
   
-  var map = null;
+  var map = null, viz = null;
 
-  $scope.changeView = function(view){
-  	console.log('changeView',view, views[view].url);
+  function initView(view){
 
   	cartodb.createVis('map', views[view].url, {
             zoom: 9
@@ -64,6 +63,7 @@ sensusApp.controller('homeController', function($scope) {
           // you can get the native map to work with it
           // depending if you use google maps or leaflet
           map = vis.getNativeMap();
+          viz = vis;
 
           // now, perform any operations you need
           // map.setZoom(3)
@@ -74,6 +74,29 @@ sensusApp.controller('homeController', function($scope) {
         });
   }
 
-  $scope.changeView('income');
+  $scope.changeView = function(view){
+  
+  	var layers = viz.getLayers();
+  	console.log('Layers',layers);
+
+          // create layer and add to the map, then add some intera
+          cartodb.createLayer(map, views[view].url)
+          .addTo(map)
+          .on('done', function(layer) {
+            // var sublayer = layer.getSubLayer(0);
+            // sublayer.on('featureOver', function(e, pos, latlng, data) {
+            //   cartodb.log.log(e, pos, latlng, data);
+            // });
+
+            // sublayer.on('error', function(err) {
+            //   cartodb.log.log('error: ' + err);
+            // });
+
+          })
+          .on('error', function() {
+            cartodb.log.log("some error occurred");
+          });
+	}
+  initView('income');
     
 });
