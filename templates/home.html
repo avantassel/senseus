@@ -13,9 +13,6 @@
           </div>
         </div>
         <div class="pull-right well">
-            <button ng-click="toggleView()">List</button> 
-        </div><!--/.navbar-collapse -->
-        <div class="pull-right well">
             <div class="current-data">
                 <div class="city">Denver</div>
                 <div class="detail">pop. 646k</div>
@@ -24,7 +21,6 @@
       </div>
     </div>
 
-    <div class="map">
         <div class="selections">
         <div class="container">
             <div>
@@ -32,6 +28,7 @@
 
                 <div class="view-items">
                     <button type="button" class="btn btn-info btn-xs" id="first">Avg Age <span class="glyphicon glyphicon-remove-sign"></span></button>
+                    <button type="button" class="btn btn-info btn-xs" ng-click="toggleView()" id="view"><span class="title">List View</span> <span class="glyphicon glyphicon-list"></span></button>
                 </div>
 
                  | 
@@ -43,6 +40,7 @@
             </div>
         </div>
         </div>
+    <div class="map">
         <div id="map"></div>
         <!-- <iframe id="cartodb" width='100%' height='520' frameborder='0' src='http://senseus.cartodb.com/viz/3f4fc986-b243-11e3-a13e-0e10bcd91c2b/embed_map?title=true&description=true&search=false&shareable=true&cartodb_logo=true&layer_selector=false&legends=true&scrollwheel=true&fullscreen=true&sublayer_options=0%7C1%7C0&sql=&sw_lat=39.70433074761611&sw_lon=-105.05680561065674&ne_lat=39.7820748864309&ne_lon=-104.80961322784424' allowfullscreen webkitallowfullscreen mozallowfullscreen oallowfullscreen msallowfullscreen></iframe> -->
     </div>

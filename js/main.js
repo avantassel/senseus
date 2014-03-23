@@ -131,9 +131,11 @@ sensusApp.controller('homeController', function($scope, MapService, ngTableParam
 		if($('.map').is(':hidden')){
 			$('.list').hide();
 			$('.map').show();
+			$('#view .title').html('List View');
 		} else {
 			$('.map').hide();
 			$('.list').show();
+			$('#view .title').html('Map View');
 		}
 
 	}
