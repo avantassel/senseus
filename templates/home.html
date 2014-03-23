@@ -1,0 +1,131 @@
+<div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <div class="navbar-brand" >
+            <a href="/"><b>SENSE-US</a></b>
+            <span class="tagline"> | Find a great area for your Colorado business</span>
+          </div>
+        </div>
+        <div class="pull-right well">
+            <div class="current-data">
+                <div class="city">Denver</div>
+                <div class="detail">pop. 646k</div>
+            </div>  
+        </div><!--/.navbar-collapse -->
+      </div>
+    </div>
+
+    <div class="selections">
+        <div class="container">
+            <div>
+                <div class="viewing-title">YOUR SELECTIONS</div>
+
+                <div class="view-items">
+                    <button type="button" class="btn btn-info btn-xs" id="first">Avg Age <span class="glyphicon glyphicon-remove-sign"></span></button>
+                </div>
+
+                 | 
+
+                <div class="operations">
+                    <button type="button" class="btn btn-success btn-xs"><span class="glyphicon glyphicon-floppy-disk"></span> Save</button>
+                    <button type="button" class="btn btn-success btn-xs"><span class="glyphicon glyphicon-share-alt"></span> Share</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="map">
+        <!-- <iframe id="cartodb" width='100%' height='520' frameborder='0' src='http://senseus.cartodb.com/viz/3f4fc986-b243-11e3-a13e-0e10bcd91c2b/embed_map?title=true&description=true&search=false&shareable=true&cartodb_logo=true&layer_selector=false&legends=true&scrollwheel=true&fullscreen=true&sublayer_options=0%7C1%7C0&sql=&sw_lat=39.70433074761611&sw_lon=-105.05680561065674&ne_lat=39.7820748864309&ne_lon=-104.80961322784424' allowfullscreen webkitallowfullscreen mozallowfullscreen oallowfullscreen msallowfullscreen></iframe> -->
+    </div>
+    <div id="list">
+      <table ng-table="tableParams" class="table">
+        <tr ng-repeat="user in results">
+            <td data-title="'Name'">
+                {{user.name}}
+            </td>
+            <td data-title="'Age'">
+                {{user.age}}
+            </td>
+            <td data-title="'Money'" sortable="money">
+                <span ng-class="{ 'plus': user.money >= 0,'minus': user.money < 0 }">{{user.money}}</span>
+            </td>
+        </tr>
+    </table>
+
+    </div>
+
+<!-- Modal -->
+<div class="modal fade" id="coming-soon" tabindex="-1" role="dialog" aria-labelledby="Coming Soon" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="myModalLabel">Want more data?</h4>
+      </div>
+      <div class="modal-body">
+        <p>This is a prototype. Is this information important to you?</p>
+        <p class="big"><span class="glyphicon glyphicon-thumbs-up"></span> <span class="glyphicon glyphicon-thumbs-down"></span></p>
+        <p>We are in the process of building out our data set. We'll let you know when there's more!</p>
+        <input type="text" class="form-control" placeholder="Email address">
+        <span class="help-block">We won't sell or abuse your data.</span>
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Let me know</button>
+      </div>
+    </div>
+  </div>
+</div>
+        
+
+    <div class="bottom">
+        <div class="container">
+          <!-- Example row of columns -->
+          <div class="row">
+            <div class="col-md-4">
+              <h3>Current Resources & Infrastructure</h3>
+              <p>Choose resources to view on the map</p>
+            </div>
+            <div class="col-md-8">
+              <h5>Places</h5>
+              <p>
+                <a class="btn btn-default active" href="#" role="button" data-toggle="modal" data-target="#coming-soon">People</a>
+                <a class="btn btn-default " href="#" role="button" data-toggle="modal" data-target="#coming-soon">Retail Sectors</a>
+                <a class="btn btn-default " href="#" role="button" data-toggle="modal" data-target="#coming-soon">Public Transportation</a>
+                <a class="btn btn-default " href="#" role="button" data-toggle="modal" data-target="#coming-soon">Taxes</a>
+                <a class="btn btn-default " href="#" role="button" data-toggle="modal" data-target="#coming-soon">Schools</a>
+                <a class="btn btn-default " href="#" role="button" data-toggle="modal" data-target="#coming-soon">Art Districts</a>
+                <a class="btn btn-default " href="#" role="button" data-toggle="modal" data-target="#coming-soon">Parking</a>
+                <span class="glyphicon glyphicon-plus-sign" data-toggle="modal" data-target="#coming-soon"></span>
+              </p>
+              <h5>People</h5>
+              <p>
+                <button class="btn btn-default " ng-click="changeView('age')" role="button">Average Age</button>
+                <button class="btn btn-default " ng-click="changeView('population')"  role="button">Population Density</button>
+                <button class="btn btn-default active" ng-click="changeView('income')" role="button">Average Income</button>
+                <button class="btn btn-default " ng-click="changeView('edu')" role="button" data-toggle="modal">Educational Attainment</button>
+                <span class="glyphicon glyphicon-plus-sign" data-toggle="modal" data-target="#coming-soon"></span>
+              </p>
+              <h5>Business</h5>
+              <p>
+                <a class="btn btn-default active" href="#" role="button">Businesses in Good Standing</a>
+                <a class="btn btn-default " href="#" role="button" data-toggle="modal" data-target="#coming-soon">Density by Sector</a>
+                <span class="glyphicon glyphicon-plus-sign" data-toggle="modal" data-target="#coming-soon"></span>
+              </p>
+           </div>
+
+          <div class="clearfix"></div>
+
+          <footer>
+            <p>&lt;/&gt; Go Code Colorado Hackathon 2014</p>
+          </footer>
+        </div> <!-- /container -->
+    </div>
+    </div>
