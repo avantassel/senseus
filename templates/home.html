@@ -13,6 +13,9 @@
           </div>
         </div>
         <div class="pull-right well">
+            <button ng-click="toggleView()">List</button> 
+        </div><!--/.navbar-collapse -->
+        <div class="pull-right well">
             <div class="current-data">
                 <div class="city">Denver</div>
                 <div class="detail">pop. 646k</div>
@@ -21,7 +24,8 @@
       </div>
     </div>
 
-    <div class="selections">
+    <div class="map">
+        <div class="selections">
         <div class="container">
             <div>
                 <div class="viewing-title">YOUR SELECTIONS</div>
@@ -38,22 +42,18 @@
                 </div>
             </div>
         </div>
-    </div>
-
-    <div id="map">
+        </div>
+        <div id="map"></div>
         <!-- <iframe id="cartodb" width='100%' height='520' frameborder='0' src='http://senseus.cartodb.com/viz/3f4fc986-b243-11e3-a13e-0e10bcd91c2b/embed_map?title=true&description=true&search=false&shareable=true&cartodb_logo=true&layer_selector=false&legends=true&scrollwheel=true&fullscreen=true&sublayer_options=0%7C1%7C0&sql=&sw_lat=39.70433074761611&sw_lon=-105.05680561065674&ne_lat=39.7820748864309&ne_lon=-104.80961322784424' allowfullscreen webkitallowfullscreen mozallowfullscreen oallowfullscreen msallowfullscreen></iframe> -->
     </div>
-    <div id="list">
-      <table ng-table="tableParams" class="table">
-        <tr ng-repeat="user in results">
-            <td data-title="'Name'">
-                {{user.name}}
-            </td>
+    <div class="list">
+      <table ng-table="tableParams" class="table table-striped">
+        <tr ng-repeat="data in results">
             <td data-title="'Age'">
-                {{user.age}}
+                {{data.properties.med_age}}
             </td>
-            <td data-title="'Money'" sortable="money">
-                <span ng-class="{ 'plus': user.money >= 0,'minus': user.money < 0 }">{{user.money}}</span>
+            <td data-title="'Households'">
+                {{data.properties.households}}
             </td>
         </tr>
     </table>
@@ -107,10 +107,10 @@
               </p>
               <h5>People</h5>
               <p>
-                <button class="btn btn-default " ng-click="changeView('age')" role="button">Average Age</button>
-                <button class="btn btn-default " ng-click="changeView('population')"  role="button">Population Density</button>
-                <button class="btn btn-default active" ng-click="changeView('income')" role="button">Average Income</button>
-                <button class="btn btn-default " ng-click="changeView('edu')" role="button" data-toggle="modal">Educational Attainment</button>
+                <button class="btn btn-default " ng-click="changeView('age',$event)" role="button">Average Age</button>
+                <button class="btn btn-default " ng-click="changeView('population',$event)"  role="button">Population Density</button>
+                <button class="btn btn-default active" ng-click="changeView('income',$event)" role="button">Average Income</button>
+                <button class="btn btn-default " ng-click="changeView('edu',$event)" role="button" data-toggle="modal">Educational Attainment</button>
                 <span class="glyphicon glyphicon-plus-sign" data-toggle="modal" data-target="#coming-soon"></span>
               </p>
               <h5>Business</h5>

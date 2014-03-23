@@ -124,9 +124,10 @@ textarea {
 .selections {
     width: 100%;
     background: rgba(11, 116, 156, 0.37);
-    padding: 76px 0 8px 0;
+    padding: 7px 0 8px 0;
     color: #fff;
     position: fixed;
+    z-index: 10;
 }
 .selections div {
     display: inline-block;
@@ -141,14 +142,18 @@ textarea {
     color:goldenrod;
     cursor:pointer;
 }
+.map {
+    padding-top: 51px;
+    /*margin-top:-18px;*/
+    /*display: none;*/
+}
 #map {
-    margin-top:-18px;
     width:100%;
     height:520px;
     /*display: none;*/
 }
-#list {
-    margin-top:-18px;
+.list {
+    padding-top: 60px;
     width:100%;
     height:520px;
     display: none;
@@ -174,7 +179,39 @@ textarea {
     background:#5bc0de !important;
 }
 
-
+/* ng-table */
+.ng-table .plus, .ng-table .minus {
+    font-weight: bold;
+    padding-left: 18px;
+    position: relative;
+}
+.ng-table .plus:before, .ng-table .minus:before {
+    content:"";
+    border-width: 4px;
+    border-style:solid;
+    left: 8px;
+    top: 50%;
+    position: absolute;
+    margin-top: -2px;
+}
+.ng-table .plus {
+    color: green;
+}
+.ng-table .plus:before {
+    border-color: green;
+    border-top:none;
+    border-left:4px solid transparent;
+    border-right:4px solid transparent;
+}
+.ng-table .minus {
+    color: red;
+}
+.ng-table .minus:before {
+    border-color: red;
+    border-bottom:none;
+    border-left:4px solid transparent;
+    border-right:4px solid transparent;
+}
 
 
 
