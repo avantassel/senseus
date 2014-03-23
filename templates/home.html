@@ -22,15 +22,15 @@
     </div>
 
         <div class="selections">
-        <div class="container">
-            <div>
-                <div class="viewing-title">YOUR SELECTIONS</div>
+        <div class="container-fluid col-md-12">
+            <div class="row col-md-12">
+                <div class="col-md-2 viewing-title">YOUR SELECTIONS</div>
 
-                <div class="view-items">
+                <div class="col-md-2 view-items">
+                    <button type="button" class="btn btn-info btn-xs" data-toggle="tooltip" data-placement="bottom" title="Click to change views" ng-click="toggleView()" id="view"><span class="title">List View</span> <span class="glyphicon glyphicon-list"></span></button>
                     <button type="button" class="btn btn-info btn-xs" id="first">Avg Age <span class="glyphicon glyphicon-remove-sign"></span></button>
-                    <button type="button" class="btn btn-info btn-xs" ng-click="toggleView()" id="view"><span class="title">List View</span> <span class="glyphicon glyphicon-list"></span></button>
                 </div>
-                <div class="operations">
+                <div class="col-md-2 col-md-offset-6 operations">
                     <button type="button" class="btn btn-success btn-xs"><span class="glyphicon glyphicon-floppy-disk"></span> Save</button>
                     <button type="button" class="btn btn-success btn-xs"><span class="glyphicon glyphicon-share-alt"></span> Share</button>
                 </div>

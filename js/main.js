@@ -16,6 +16,8 @@ $(document).ready(function() {
 		return false;
 	});
 
+	$('.view-items button').tooltip();
+
 });
 
 var sensusApp = angular.module('senseus', ['ngRoute','ngTable']);
@@ -50,9 +52,9 @@ sensusApp.factory('MapService', function($http) {
 sensusApp.controller('homeController', function($scope, MapService, ngTableParams) {	
 	// http://developers.cartodb.com/documentation/cartodb-js.html
   var views = {
-  	'age': {url:'http://senseus.cartodb.com/api/v2/viz/3f4fc986-b243-11e3-a13e-0e10bcd91c2b/viz.json', table: 'census'}
+  	'age': {url:'http://senseus.cartodb.com/api/v2/viz/a5f3a766-b243-11e3-9c07-0e10bcd91c2b/viz.json', table: 'census'}
   	,'income': {url:'http://senseus.cartodb.com/api/v2/viz/2e84858a-b241-11e3-be2e-0e73339ffa50/viz.json', table: 'census'}
-  	,'population': {url:'http://senseus.cartodb.com/api/v2/viz/a5f3a766-b243-11e3-9c07-0e10bcd91c2b/viz.json', table: 'census'}
+  	,'population': {url:'http://senseus.cartodb.com/api/v2/viz/3f4fc986-b243-11e3-a13e-0e10bcd91c2b/viz.json', table: 'census'}
   	,'edu': {url:'http://senseus.cartodb.com/api/v2/viz/c495a460-b23b-11e3-8f25-0e230854a1cb/viz.json', table: 'census'}
   }	;
   
@@ -68,6 +70,7 @@ sensusApp.controller('homeController', function($scope, MapService, ngTableParam
         .done(function(vis, layers) {
           // layer 0 is the base layer, layer 1 is cartodb layer
           // setInteraction is disabled by default
+          
           layers[1].setInteraction(true);
           // layers[1].on('featureOver', function(e, pos, latlng, data) {
           //   cartodb.log.log(e, pos, latlng, data);
@@ -102,6 +105,8 @@ sensusApp.controller('homeController', function($scope, MapService, ngTableParam
   }
 
   $scope.changeView = function(view,e){
+  		  console.log('changeView',view,views[view].url);
+
   		  $scope.viewing = $(e.srcElement).html();
   		  $('.resources-people button').removeClass('active');
   		  $(e.srcElement).addClass('active');
@@ -110,6 +115,7 @@ sensusApp.controller('homeController', function($scope, MapService, ngTableParam
           cartodb.createLayer($scope.map, views[view].url)
           .addTo($scope.map)
           .on('done', function(layer) {
+          	layer.clear();
             // var sublayer = layer.getSubLayer(0);
             // sublayer.on('featureOver', function(e, pos, latlng, data) {
             //   cartodb.log.log(e, pos, latlng, data);
@@ -141,6 +147,6 @@ sensusApp.controller('homeController', function($scope, MapService, ngTableParam
 
 	}
 
-  initView('income');
+  initView('population');
     
 });
